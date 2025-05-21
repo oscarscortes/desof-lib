@@ -15,6 +15,7 @@ public class Inventario {
 
     private Float precio;
 
+    @Column(name = "precioventa")
     private Float precioVenta;
 
     @ManyToOne
@@ -22,7 +23,7 @@ public class Inventario {
     private Sucursal sucursal;
 
     @ManyToOne
-    @JoinColumn(name = "productoid", referencedColumnName = "id")
+    @JoinColumn(name = "productoid", referencedColumnName = "codigo")
     private Producto producto;
 
     public Long getId() {
