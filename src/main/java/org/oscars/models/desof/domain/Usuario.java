@@ -1,15 +1,21 @@
 package org.oscars.models.desof.domain;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuario")
 public class Usuario {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "usuario_gen")
+    @TableGenerator(
+            name = "usuario_gen",
+            table = "usuario_seq",
+            pkColumnName = "seq_name",
+            valueColumnName = "seq_value",
+            pkColumnValue = "usuario",
+            allocationSize = 1
+    )
     private Long id;
 
     private String username;
